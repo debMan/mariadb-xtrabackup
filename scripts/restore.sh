@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-parent_dir="${PWD}/backups/${RESTORE_DIR}"
+parent_dir="/backups/${RESTORE_DIR}"
 
 if [ -z "${RESTORE_DIR}" ]; then
     echo "please specify RESTORE_DIR"
