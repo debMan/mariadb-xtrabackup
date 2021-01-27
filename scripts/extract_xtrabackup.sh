@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export LC_ALL=C
 
 log_file="extract-progress.log"
 number_of_args="${#}"
 processors="$(nproc --all)"
-dir="${PWD}/backups/${RESTORE_DIR}"
+dir="/backups/${RESTORE_DIR}"
 
 # Use this to echo to standard error
 error () {
@@ -13,7 +13,8 @@ error () {
     exit 1
 }
 
-trap 'error "An unexpected error occurred.  Try checking the \"${log_file}\" file for more information."' ERR
+trap 'error "An unexpected error occurred.  Try checking the \"${log_file}\" \
+file for more information."' ERR
 
 do_extraction () {
 echo "${@}"
@@ -51,7 +52,9 @@ ok_count="$(grep -c 'completed OK' "${log_file}")"
 # additional "completed OK" is printed. Together, this means there should be 2
 # notices per backup file if the process was successful.
 if (( $ok_count !=  $# )); then
-    error "It looks like something went wrong. Please check the \"${log_file}\" file for additional information"
+    error "It looks like something went wrong. Please check the \
+		\"${log_file}\" file for additional information"
 else
-    printf "Extraction complete! Backup directories have been extracted to the \"restore\" directory.\n"
+    printf "Extraction complete! Backup directories have been extracted to \
+	the \"restore\" directory.\n"
 fi
