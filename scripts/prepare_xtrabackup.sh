@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export LC_ALL=C
 
-parent_dir="${PWD}/backups/${RESTORE_DIR}/restore" #directory of backups
+parent_dir="/backups/${RESTORE_DIR}/restore" #directory of backups
 shopt -s nullglob
 incremental_dirs=( "${parent_dir}"/incremental-*/ )
 full_dirs=( "${parent_dir}"/full-*/ )

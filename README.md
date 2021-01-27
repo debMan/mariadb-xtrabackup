@@ -13,7 +13,7 @@ clone this repository whenever your database exist.
 You can use image from docker hub:
 
 ```
-docker run -i -v /var/lib/mysql:/var/lib/mysql -v /backupdir:/mnt/backups -e HOST=mysql_host -e MYSQL_USER=root -e MYSQL_ROOT_PASSWORD=example smansoorirad/mariadb-xtrabackup
+docker run -i -v /var/lib/mysql:/var/lib/mysql -v /backupdir:/backups -e HOST=mysql_host -e MYSQL_USER=root -e MYSQL_ROOT_PASSWORD=example smansoorirad/mariadb-xtrabackup
 ```
 `backupdir` is your local directory to keeps backups
 
@@ -26,7 +26,7 @@ This image run a cron job which get a full backup every days and get incremental
 in case you don't need cronjob, you can run the script directly within command in docker-compose or docker run:
 
 ```
-docker run -i -v /var/lib/mysql:/var/lib/mysql -v /backupdir:/mnt/backups -e HOST=mysql_host -e MYSQL_USER=root -e MYSQL_ROOT_PASSWORD=example smansoorirad/mariadb-xtrabackup bash -c ./xtrabackup.sh
+docker run -i -v /var/lib/mysql:/var/lib/mysql -v /backupdir:/backups -e HOST=mysql_host -e MYSQL_USER=root -e MYSQL_ROOT_PASSWORD=example smansoorirad/mariadb-xtrabackup bash -c ./xtrabackup.sh
 ```
 
 #### Restore backup
@@ -34,7 +34,7 @@ docker run -i -v /var/lib/mysql:/var/lib/mysql -v /backupdir:/mnt/backups -e HOS
 For restore backups first the backups need extract and prepare:
 
 ```
-docker run -i -v /backupdir:/mnt/backups -e RESTORE_DIR=Mon smansoorirad/mariadb-xtrabackup bash -c ./restore.sh
+docker run -i -v /backupdir:/backups -e RESTORE_DIR=Mon smansoorirad/mariadb-xtrabackup bash -c ./restore.sh
 ```
 It creates restore directory inside `RESTORE_DIR`. The full-backup will represent a consistent set of data that can be moved into MariaDb's data directory.
 

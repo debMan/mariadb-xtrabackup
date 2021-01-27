@@ -1,2 +1,2 @@
 # Run every hour
-0 * * * * /mnt/xtrabackup.sh
+0 * * * * /app/xtrabackup.sh

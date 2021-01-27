@@ -2,7 +2,7 @@
 
 export LC_ALL=C
 
-parent_dir="${PWD}/backups" #directory of backups
+parent_dir="/backups" #directory of backups
 todays_dir="${parent_dir}/$(date +%F)"
 log_file="${todays_dir}/backup-progress.log"
 now="$(date +%m-%d-%Y_%H-%M-%S)"
