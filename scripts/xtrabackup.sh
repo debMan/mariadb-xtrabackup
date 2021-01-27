@@ -61,11 +61,11 @@ take_backup () {
 
 }
 
-sync_backup () {
-    if [ -e ~/.mc/config.json ]; then
-        mc mirror --remove --overwrite "${parent_dir}"/ "${MINIO_BUCKET}"
-    fi
-}
+#sync_backup () {
+#    if [ -e ~/.mc/config.json ]; then
+#        mc mirror --remove --overwrite "${parent_dir}"/ "${MINIO_BUCKET}"
+#    fi
+#}
 
 set_options && take_backup && rotate_old && sync_backup
 

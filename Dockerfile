@@ -7,11 +7,11 @@ ENV SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.
 
 RUN install_packages \
   openssl ca-certificates gnupg2 dirmngr curl wget lsb-release qpress \
- && curl -fsSLO "$SUPERCRONIC_URL" \
- && echo "${SUPERCRONIC_SHA1SUM}  ${SUPERCRONIC}" | sha1sum -c - \
- && chmod +x "$SUPERCRONIC" \
- && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
- && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
+  && curl -fsSLO "$SUPERCRONIC_URL" \
+  && echo "${SUPERCRONIC_SHA1SUM}  ${SUPERCRONIC}" | sha1sum -c - \
+  && chmod +x "$SUPERCRONIC" \
+  && mv "$SUPERCRONIC" "/usr/local/bin/${SUPERCRONIC}" \
+  && ln -s "/usr/local/bin/${SUPERCRONIC}" /usr/local/bin/supercronic
 
 # Install xtrabackup
 RUN wget https://repo.percona.com/apt/percona-release_latest.$(lsb_release -sc)_all.deb \
@@ -20,9 +20,9 @@ RUN wget https://repo.percona.com/apt/percona-release_latest.$(lsb_release -sc)_
   && install_packages percona-xtrabackup-80 qpress
 
 # Install minio
-RUN curl -fsSLO https://dl.minio.io/client/mc/release/linux-amd64/mc \
-    && chmod +x ./mc \
-    && mv ./mc /usr/local/bin/
+#RUN curl -fsSLO https://dl.minio.io/client/mc/release/linux-amd64/mc \
+#  && chmod +x ./mc \
+#  && mv ./mc /usr/local/bin/
 
 WORKDIR /app
 
